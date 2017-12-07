@@ -17,13 +17,11 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <spring:import resource="classpath:/error-handing.xml"/>
     </spring:beans>
 
-	<context:property-placeholder location="database.properties" />
+	<context:property-placeholder location="common-service.properties" />
 	<db:mysql-config name="MySQL_Configuration" host="${db.mysql.host}"
 		port="${db.mysql.port}" user="${db.mysql.user}" password="${db.mysql.password}"
 		database="${db.mysql.database}" doc:name="MySQL Configuration" />
+		
+    <http:request-config name="System_HTTP_Request" host="${system.app.host}" port="${system.app.port}" usePersistentConnections="false" doc:name="System HTTP Request"/>
 
-	<context:property-placeholder location="system_http_connection.properties" />
-	<http:request-config name="sysem_http_request"
-		host="${system.mule.host}" port="${system.mule.port}"
-		usePersistentConnections="false" doc:name="system http configuration" />
 </mule>
